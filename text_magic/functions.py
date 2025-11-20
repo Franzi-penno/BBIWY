@@ -2,9 +2,10 @@ from string import punctuation
 
 PUNCTUATIONS = punctuation + "“”‘’—"
 
+
 def clean_to_lower(text:str) -> str:
-    
    return text.lower()
+
 
 def clean_punctuation(text:str) -> str:
 
@@ -14,13 +15,25 @@ def clean_punctuation(text:str) -> str:
             output_string += character
     return output_string
 
+
 def clean_strip(text:str) -> str:
     for _ in range(10):
         text = text.replace("  "," ")
     return text.strip()
 
-def pipeline(text:str) -> str:
+
+def clean_stopwords(text:str, language:str="english") -> str:
+    words= text.split(" ")
+    clean_text = []
+    for word in words:
+        if words in stopwords.words(language):
+            clean_text.append(word)
+    return " ".join(clean_text)  
+
+
+def pipeline(text:str, **kwargs) -> str:
     text = clean_to_lower(text)
     text = clean_punctuation(text)
     text = clean_strip(text)
+    text = clean_stopwords(text, **kwargs)
     return text
