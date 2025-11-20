@@ -1,9 +1,0 @@
-bs4
-nltk
-textblob
-scipy
-scikit-learn
-matplotlib
-pandas
-jupyter
-
