@@ -1,4 +1,5 @@
 from string import punctuation
+from nltk.corpus import stopwords
 
 PUNCTUATIONS = punctuation + "“”‘’—"
 
