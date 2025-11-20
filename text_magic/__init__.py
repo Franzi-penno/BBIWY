@@ -1,1 +1,1 @@
-from functions import pipeline
+from .functions import pipeline
