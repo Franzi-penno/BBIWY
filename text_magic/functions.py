@@ -1,4 +1,5 @@
 from string import punctuation
+from nltk.corpus import stopwords
 
 PUNCTUATIONS = punctuation + "“”‘’—"
 
@@ -18,9 +19,17 @@ def clean_strip(text:str) -> str:
         text = text.replace("  ", " ")
     return text.strip()
 
-def pipeline(text:str, language) -> str:
+def clean_stopwords(text: str, language: str = "english"):
+    words = text.split(" ")
+    clean_text = []
+    for word in words: 
+        if words in stopwords.words(language):
+            clean_text.append(words)
+    return " ".join(clean_text)
+
+def pipeline(text:str, **kwargs) -> str:
     text = clean_to_lower(text)
     text = clean_punctuation(text)
     text = clean_strip(text)
-    text = clean_stopwords(text, language=language)
+    text = clean_stopwords(text, **kwargs)
     return text
