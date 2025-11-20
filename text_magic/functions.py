@@ -18,8 +18,9 @@ def clean_strip(text:str) -> str:
         text = text.replace("  ", " ")
     return text.strip()
 
-def pipeline(text:str) -> str:
+def pipeline(text:str, language) -> str:
     text = clean_to_lower(text)
     text = clean_punctuation(text)
     text = clean_strip(text)
+    text = clean_stopwords(text, language=language)
     return text
