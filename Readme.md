@@ -56,3 +56,27 @@ Der Kurs richtet sich an Studierende mit Schwerpunkt auf Medien- und Managementf
 * Öffnet euren Fork mit Github Desktop (oder nutzt `git clone` im Terminal)
 * Erstellt eine virtuelle Umgebung mit VSCode (oder nutzt `python -m virtualenv .venv` im Terminal)
 * Installiert die Bibliotheken in der `requirements.txt`
+
+
+## Coden mit LLMs
+
+* ollama herunterladen
+* 'llama3.1:8b' herunterladen
+
+dieser Code in Terminal einfügen:
+```bash
+ollama pull llama3.1:8b```
+
+* Modelfile erzeugen (Texteditor)
+```bash
+FROM llama3.1:8b
+
+PARAMETER temperatur 0,7
+PARAMETER num_ctx 5000
+
+SYSTEM """Du bist Peter Parker""" ```
+
+```bash
+ollama crearte peterparker -f Modelfile
+```
+* Chatbot aus Modelfile erzeugen 
